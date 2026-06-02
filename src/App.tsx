@@ -325,10 +325,15 @@ export default function App() {
                     <div className="w-24 h-24 bg-lime-500 rounded-full flex items-center justify-center mb-6">
                       <Camera className="w-12 h-12 text-black" />
                     </div>
-                    <h3 className="text-white text-xl font-semibold mb-2">Activar Cámara</h3>
+
+                    <h3 className="text-white text-xl font-semibold mb-2">
+                      Activar Cámara
+                    </h3>
+
                     <p className="text-neutral-400 text-center max-w-md mb-6">
                       Presiona el botón para activar la cámara y comenzar a capturar fotos de tu vehículo
                     </p>
+
                     <button
                       onClick={startCamera}
                       className="px-8 py-4 bg-lime-500 text-black font-semibold rounded-xl hover:bg-lime-400 transition-colors flex items-center gap-3"
@@ -344,7 +349,11 @@ export default function App() {
                     <div className="w-24 h-24 bg-lime-500 rounded-full flex items-center justify-center mb-6 animate-pulse">
                       <Loader2 className="w-12 h-12 text-black animate-spin" />
                     </div>
-                    <h3 className="text-white text-xl font-semibold mb-2">Solicitando Permiso</h3>
+
+                    <h3 className="text-white text-xl font-semibold mb-2">
+                      Solicitando Permiso
+                    </h3>
+
                     <p className="text-neutral-400 text-center max-w-md">
                       Por favor permite el acceso a la cámara cuando el navegador lo solicite
                     </p>
@@ -356,10 +365,15 @@ export default function App() {
                     <div className="w-24 h-24 bg-neutral-700 rounded-full flex items-center justify-center mb-6">
                       <AlertCircle className="w-12 h-12 text-white" />
                     </div>
-                    <h3 className="text-white text-xl font-semibold mb-2">Error de Cámara</h3>
+
+                    <h3 className="text-white text-xl font-semibold mb-2">
+                      Error de Cámara
+                    </h3>
+
                     <p className="text-neutral-400 text-center max-w-md mb-6">
                       {cameraError || 'No se pudo acceder a la cámara'}
                     </p>
+
                     <button
                       onClick={startCamera}
                       className="px-8 py-4 bg-lime-500 text-black font-semibold rounded-xl hover:bg-lime-400 transition-colors flex items-center gap-3"
@@ -372,13 +386,17 @@ export default function App() {
               </div>
             ) : (
               <>
-                {/* Video Element */}
                 <video
                   ref={videoRef}
                   autoPlay
                   playsInline
                   muted
                   className="w-full h-full object-cover"
+                />
+
+                <canvas
+                  ref={canvasRef}
+                  className="hidden"
                 />
 
                 {/* Overlay with lime green silhouette */}
@@ -397,95 +415,35 @@ export default function App() {
                       `}
                       style={{ mixBlendMode: 'screen' }}
                     />
-
-                    <svg
-                      viewBox="0 0 460 300"
-                      className="absolute inset-0 w-full h-full"
-                      preserveAspectRatio="none"
-                    >
-                      <g stroke={isAligned ? '#D9FF3F' : '#B6FF00'} strokeWidth="4" fill="none" opacity="0.9">
-                        <path d="M 30 30 L 30 80 M 30 30 L 80 30" />
-                        <path d="M 430 30 L 430 80 M 430 30 L 380 30" />
-                        <path d="M 30 270 L 30 220 M 30 270 L 80 270" />
-                        <path d="M 430 270 L 430 220 M 430 270 L 380 270" />
-                      </g>
-
-                      <g stroke={isAligned ? '#D9FF3F' : '#B6FF00'} strokeWidth="2" fill="none" opacity="0.7">
-                        <line x1="230" y1="20" x2="230" y2="50" />
-                        <line x1="230" y1="280" x2="230" y2="250" />
-                        <line x1="20" y1="150" x2="50" y2="150" />
-                        <line x1="440" y1="150" x2="410" y2="150" />
-                      </g>
-                    </svg>
                   </div>
                 )}
 
-                {/* Alignment Indicator */}
-                <div className={`
-                  absolute top-4 left-4 right-4 flex items-center justify-center
-                  transition-all duration-300
-                  ${isAligned ? 'opacity-100 translate-y-0' : 'opacity-80 translate-y-2'}
-                `}>
-                  <div className={`
-                    px-6 py-3 rounded-full backdrop-blur-lg flex items-center gap-3
-                    ${isAligned
-                      ? 'bg-lime-500'
-                      : matchScore > 60
-                        ? 'bg-neutral-600'
-                        : 'bg-neutral-800/80'
-                    }
-                  `}>
-                    {isAligned ? (
-                      <Check className="w-6 h-6 text-black" />
-                    ) : (
-                      <Camera className="w-6 h-6 text-white" />
-                    )}
-                    <div>
-                      <p className={`font-semibold ${isAligned ? 'text-black' : 'text-white'}`}>
-                        {isAligned
-                          ? '¡Posición Correcta!'
-                          : matchScore > 60
-                            ? 'Casi alineado...'
-                            : 'Alinea con la silueta'
-                        }
-                      </p>
-                      <p className={`text-sm ${isAligned ? 'text-black/70' : 'text-white/80'}`}>
-                        Coincidencia: {matchScore}%
-                      </p>
-                    </div>
-                    <div className="w-24 h-2 bg-white/30 rounded-full overflow-hidden">
-                      <div
-                        className={`h-full rounded-full transition-all duration-300 ${
-                          isAligned ? 'bg-black' : 'bg-white'
-                        }`}
-                        style={{ width: `${matchScore}%` }}
-                      />
-                    </div>
+                {/* Alignment Status */}
+                <div className="absolute top-4 right-4">
+                  <div
+                    className={`
+                      px-4 py-2 rounded-full text-sm font-semibold
+                      ${isAligned
+                        ? 'bg-lime-500 text-black'
+                        : 'bg-black/60 text-white border border-neutral-700'
+                      }
+                    `}
+                  >
+                    {isAligned ? 'Alineado' : 'Alinea el vehículo'}
                   </div>
                 </div>
 
                 {/* Instructions */}
                 <div className="absolute bottom-4 left-4 right-4 angle-card-landscape-friendly">
                   <div className="bg-black/60 backdrop-blur-lg rounded-xl p-4 border border-neutral-700">
-                    <h3 className="text-lime-400 font-semibold mb-1">{currentAngle.name}</h3>
-                    <p className="text-neutral-300 text-sm">{currentAngle.description}</p>
-                  </div>
-                </div>
+                    <h3 className="text-lime-400 font-semibold mb-1">
+                      {currentAngle.name}
+                    </h3>
 
-                {/* Controls */}
-                <div className="absolute bottom-4 right-4 flex items-center gap-3">
-                  <button
-                    onClick={() => setShowOverlay(!showOverlay)}
-                    className={`
-                      p-3 rounded-full backdrop-blur-lg transition-all
-                      ${showOverlay ? 'bg-lime-500' : 'bg-neutral-800/80'}
-                    `}
-                  >
-                    <svg className="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="3" width="18" height="18" rx="2" />
-                      <path d="M3 9h18M9 3v18" />
-                    </svg>
-                  </button>
+                    <p className="text-neutral-300 text-sm">
+                      {currentAngle.description}
+                    </p>
+                  </div>
                 </div>
               </>
             )}
@@ -518,6 +476,7 @@ export default function App() {
               </div>
             </div>
           )}
+        </div>
 
         {/* Photo Gallery */}
         <div className="mt-6">
