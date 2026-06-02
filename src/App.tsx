@@ -225,7 +225,7 @@ export default function App() {
 
       <main className="max-w-7xl mx-auto px-4 py-6">
         {/* Vehicle Plate */}
-        <div className="mb-6 bg-neutral-900 border border-neutral-800 rounded-2xl p-5">
+        <div className="mb-6 bg-neutral-900 border border-neutral-800 rounded-2xl p-5 mobile-landscape-compact">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 bg-lime-500 rounded-xl flex items-center justify-center text-black font-bold">
               1
@@ -252,7 +252,7 @@ export default function App() {
         </div>
 
         {/* Angle Selector */}
-        <div className="mb-6">
+        <div className="mb-6 mobile-landscape-compact">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-white font-semibold text-lg">2. Selecciona el ángulo</h2>
             <div className="flex items-center gap-2">
@@ -315,7 +315,7 @@ export default function App() {
         </div>
 
         {/* Camera View */}
-        <div className="relative rounded-2xl overflow-hidden bg-black border-2 border-neutral-800">
+        <div className="relative rounded-2xl overflow-hidden bg-black border-2 border-neutral-800 camera-landscape-friendly">
           {/* Video Container */}
           <div className="relative aspect-[16/9] bg-neutral-900">
             {!isCameraActive ? (
