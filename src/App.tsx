@@ -429,7 +429,7 @@ export default function App() {
                       }
                     `}
                   >
-                    {isAligned ? 'Alineado' : 'Alinea el vehículo'} · {alignmentScore}%
+                    {isAligned ? 'Alineado' : 'Alinea el vehículo'}
                   </div>
                 </div>
 
