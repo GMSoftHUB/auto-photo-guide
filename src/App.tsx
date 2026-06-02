@@ -515,11 +515,9 @@ export default function App() {
                 >
                   <div className="w-16 h-16 rounded-full bg-white/20" />
                 </button>
-                <div className="w-14" />
               </div>
             </div>
           )}
-        </div>
 
         {/* Photo Gallery */}
         <div className="mt-6">
