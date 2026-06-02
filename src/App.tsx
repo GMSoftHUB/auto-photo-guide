@@ -465,7 +465,7 @@ export default function App() {
                 </div>
 
                 {/* Instructions */}
-                <div className="absolute bottom-4 left-4 right-4">
+                <div className="absolute bottom-4 left-4 right-4 angle-card-landscape-friendly">
                   <div className="bg-black/60 backdrop-blur-lg rounded-xl p-4 border border-neutral-700">
                     <h3 className="text-lime-400 font-semibold mb-1">{currentAngle.name}</h3>
                     <p className="text-neutral-300 text-sm">{currentAngle.description}</p>
@@ -493,19 +493,20 @@ export default function App() {
 
           {/* Camera Controls */}
           {isCameraActive && (
-            <div className="bg-neutral-900 p-4 border-t border-neutral-800">
-              <div className="flex items-center justify-center gap-6">
+            <div className="bg-neutral-900 p-4 border-t border-neutral-800 camera-controls-landscape-friendly">
+              <div className="flex items-center justify-center gap-6 controls-row-landscape-friendly">
                 <button
                   onClick={stopCamera}
                   className="p-3 rounded-full bg-neutral-700 hover:bg-neutral-600 transition-colors"
                 >
                   <RotateCcw className="w-6 h-6 text-white" />
                 </button>
+
                 <button
                   onClick={takePhoto}
                   disabled={!isAligned}
                   className={`
-                    w-20 h-20 rounded-full flex items-center justify-center transition-all border-4
+                    w-20 h-20 rounded-full flex items-center justify-center transition-all border-4 capture-button-landscape-friendly
                     ${isAligned
                       ? 'bg-lime-500 border-lime-400 hover:bg-lime-400 hover:scale-105'
                       : 'bg-neutral-700 border-neutral-600 cursor-not-allowed opacity-50'

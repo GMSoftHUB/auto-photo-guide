@@ -40,3 +40,187 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Mobile horizontal / landscape friendly layout */
+@media screen and (max-width: 950px) and (orientation: landscape) {
+  header {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+
+  header h1 {
+    font-size: 18px !important;
+    line-height: 1.1 !important;
+  }
+
+  header p {
+    font-size: 13px !important;
+  }
+
+  main {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  main > div {
+    margin-bottom: 12px !important;
+  }
+
+  .mobile-landscape-compact {
+    padding: 12px !important;
+    border-radius: 14px !important;
+  }
+
+  .mobile-landscape-compact h2 {
+    font-size: 16px !important;
+  }
+
+  .mobile-landscape-compact p {
+    font-size: 12px !important;
+  }
+
+  .mobile-landscape-compact input {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    font-size: 16px !important;
+  }
+
+  .camera-landscape-friendly {
+    height: calc(100vh - 145px) !important;
+    min-height: 330px !important;
+    max-height: 520px !important;
+    position: relative !important;
+  }
+
+  .camera-landscape-friendly video,
+  .camera-landscape-friendly canvas {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    background: #000 !important;
+  }
+
+  .angle-card-landscape-friendly {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 78px !important;
+    padding: 12px 14px !important;
+    border-radius: 14px !important;
+  }
+
+  .angle-card-landscape-friendly h3 {
+    font-size: 16px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .angle-card-landscape-friendly p {
+    font-size: 12px !important;
+  }
+
+  .capture-button-landscape-friendly {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 14px !important;
+    transform: translateX(-50%) !important;
+    z-index: 60 !important;
+    width: 58px !important;
+    height: 58px !important;
+  }
+}
+/* Mobile horizontal / landscape - cámara más amigable */
+@media screen and (max-width: 950px) and (orientation: landscape) {
+  body {
+    background: #000 !important;
+  }
+
+  header {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+
+  header h1 {
+    font-size: 18px !important;
+    line-height: 1.1 !important;
+  }
+
+  header p {
+    font-size: 13px !important;
+    line-height: 1.1 !important;
+  }
+
+  main {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .mobile-landscape-compact {
+    margin-bottom: 10px !important;
+    padding: 10px 12px !important;
+    border-radius: 14px !important;
+  }
+
+  .mobile-landscape-compact h2 {
+    font-size: 15px !important;
+  }
+
+  .mobile-landscape-compact p {
+    font-size: 12px !important;
+  }
+
+  .mobile-landscape-compact input {
+    padding-top: 9px !important;
+    padding-bottom: 9px !important;
+    font-size: 15px !important;
+  }
+
+  .camera-landscape-friendly {
+    height: calc(100dvh - 90px) !important;
+    min-height: 340px !important;
+    max-height: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .camera-landscape-friendly video,
+  .camera-landscape-friendly canvas {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    background: #000 !important;
+  }
+
+  .angle-card-landscape-friendly {
+    position: absolute !important;
+    top: 12px !important;
+    left: 12px !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 260px !important;
+    max-width: 42vw !important;
+    padding: 10px 12px !important;
+    border-radius: 12px !important;
+    z-index: 40 !important;
+  }
+
+  .angle-card-landscape-friendly h3 {
+    font-size: 15px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .angle-card-landscape-friendly p {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+  }
+
+  .capture-button-landscape-friendly {
+    position: absolute !important;
+    right: 18px !important;
+    top: 50% !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    z-index: 80 !important;
+    width: 68px !important;
+    height: 68px !important;
+  }
+}
