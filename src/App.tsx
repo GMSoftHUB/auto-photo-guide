@@ -53,6 +53,7 @@ const CAR_ANGLES: CarAngle[] = [
 type CameraStatus = 'idle' | 'requesting' | 'starting' | 'active' | 'error';
 
 export default function App() {
+  const [vehiclePlate, setVehiclePlate] = useState('');
   const [currentAngleIndex, setCurrentAngleIndex] = useState(0);
   const [isAligned, setIsAligned] = useState(false);
   const [matchScore, setMatchScore] = useState(0);
@@ -223,10 +224,37 @@ export default function App() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 py-6">
+        {/* Vehicle Plate */}
+        <div className="mb-6 bg-neutral-900 border border-neutral-800 rounded-2xl p-5">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-lime-500 rounded-xl flex items-center justify-center text-black font-bold">
+              1
+            </div>
+
+            <div>
+              <h2 className="text-white font-semibold text-lg">
+                Ingresa la placa del vehículo
+              </h2>
+              <p className="text-neutral-400 text-sm">
+                Escribe la placa antes de iniciar la toma de fotografías.
+              </p>
+            </div>
+          </div>
+
+          <input
+            type="text"
+            value={vehiclePlate}
+            onChange={(e) => setVehiclePlate(e.target.value.toUpperCase())}
+            placeholder="Ej: ABC123"
+            maxLength={8}
+            className="w-full bg-black border border-neutral-700 rounded-xl px-4 py-4 text-white text-xl font-semibold tracking-widest uppercase outline-none focus:border-lime-500"
+          />
+        </div>
+
         {/* Angle Selector */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-white font-semibold text-lg">Selecciona el ángulo</h2>
+            <h2 className="text-white font-semibold text-lg">2. Selecciona el ángulo</h2>
             <div className="flex items-center gap-2">
               <button
                 onClick={() => goToAngle(currentAngleIndex - 1)}
